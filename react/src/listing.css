@@ -1,0 +1,104 @@
+.header{
+    width: 100%;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.searchBar{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px;
+}
+
+.searchBar input{
+    width: 800px;
+    height: 40px;
+}
+
+.searchBar button{
+    width: 100px;
+    height: 40px;
+    margin-left: 10px;
+    font-weight: bold;
+}
+.row{
+    padding-left: 40px;
+    padding-right: 40px;
+}
+/* Float four columns side by side */
+.column {
+    float: left;
+    width: 25%;
+    padding: 0 15px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+/* Remove extra left and right margins, due to padding in columns */
+.row {margin: 0 -5px;}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Style the counter cards */
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
+    padding: 16px;
+    text-align: center;
+    background-color: #f1f1f1;
+    font-weight: bold;
+}
+
+.cardImg{
+    width:200px;
+    height:200px;
+    border-radius: 10px;
+}
+
+.center {
+    text-align: center;
+}
+.pagination {
+    display: inline-block;
+    padding-top: 25px;
+}
+
+.pagination a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    font-size: 20px;
+    text-decoration: none;
+}
+
+.pagination a.active {
+    background-color: #005BBB;
+    color: white;
+    border-radius: 5px;
+}
+
+.pagination a:hover:not(.active) {
+    background-color: #ddd;
+    border-radius: 5px;
+}
+
+/* Responsive columns - one column layout (vertical) on small screens */
+@media screen and (max-width: 800px) {
+    .column {
+        width: 100%;
+        display: block;
+        margin-bottom: 20px;
+    }
+}

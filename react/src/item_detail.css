@@ -1,0 +1,116 @@
+.itemInfo{
+    width:85%;
+    margin-left: 7.5%;
+    margin-bottom: 50px;
+}
+
+.itemLeft {
+    width:50%;
+    height: 100%;
+    float: left;
+    padding-top: 30px;
+}
+
+.itemRight{
+    margin-left: 50%;
+    height: 500px;
+    padding-left: 50px;
+    padding-right: 70px;
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.itemName{
+    font-weight: bold;
+    font-size: x-large;
+}
+.itemPrice{
+    font-weight: bold;
+    font-size: larger;
+}
+.itemLocation{
+    font-size: large;
+}
+
+.itemLocation h3{
+    width: fit-content;
+    border-bottom: 3.5px solid black;
+}
+
+.itemLocation button{
+    font-size: medium;
+    font-weight: bold;
+    margin-right: 10px;
+    margin-bottom: 4px;
+    padding: 7.5px;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.descriptionTitle{
+    width: fit-content;
+    border-bottom: 3.5px solid black;
+}
+
+.itemDescription{
+    margin-top: -5px;
+    width: 90%;
+    overflow: scroll;
+}
+
+
+.itemThumbnail{
+    height: 500px;
+    position: relative;
+}
+
+.itemThumbnail img{
+    height: 450px;
+    width: 450px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
+}
+
+.relatedItems{
+    display: flex;
+    margin-top: 10px;
+    justify-content: center;
+}
+
+.relatedItems h3{
+    border-bottom: 3.5px solid black;
+    margin-bottom: 25px;
+}
+
+.relatedList{
+    display: flex;
+    justify-content: center;
+}
+
+.relatedList .itemImg{
+    display: inline-block;
+    padding-right: 20px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.relatedList .itemImg img{
+    width: 150px;
+    height: 150px;
+    padding-right: 20px;
+}
+
+p {
+    text-align: center;
+}
+
+.itemName a {
+    color: #005BBB;
+}

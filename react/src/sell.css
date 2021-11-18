@@ -1,0 +1,83 @@
+body {
+    background-color: white;
+}
+
+.sell {
+    display: grid;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    margin: 2.5rem;
+    width: -moz-fit-content;
+    width: fit-content;
+    position: relative;
+    justify-self: center;
+}
+
+form label {
+    font-size: 30px;
+    display: flex;
+    margin-bottom: 2rem;
+}
+
+form label div:not(.images):not(.add) {
+    margin-left: 3rem;
+    margin-right: 3rem;
+    text-align: center;
+    width: 15rem;
+}
+
+form label input,
+form label select,
+form label textarea {
+    height: 40px;
+    width: 50rem;
+    font-size: 24px;
+}
+
+form label select {
+    width: 50.5rem;
+}
+
+form label textarea {
+    height: 120px;
+}
+
+form input {
+    width: 5rem;
+    height: 30px;
+    align-self: end;
+}
+
+form label img {
+    width: 10rem;
+    height: 80px;
+}
+
+form > input[type="file"] {
+    display: none;
+}
+
+form label div.add {
+    width: 80px;
+    height: 80px;
+    border: gray;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 1px;
+    align-self: center;
+    font-size: 64px;
+    color: gray;
+    text-align: center;
+    margin-right: 2rem;
+}
+
+form label div.images {
+    display: flex;
+}
+
+form label div.images img {
+    padding-right: 1rem;
+}
