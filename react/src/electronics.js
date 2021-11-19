@@ -11,11 +11,16 @@ const Electronics = () =>{
     const[loading, setLoading] = useState(false);
     const[currentPage, setCurrentPage] = useState(1);
     const[postPerPage] = useState(8);
-
+    const electronics = {
+        "category":"electronics",
+        "userId":"",
+        "location":"",
+        "pricing":""
+    }
     useEffect(()=> {
         const fetchPosts = async () => {
             setLoading(true);
-            const res = await axios.get('/api/allitem');
+            const res = await axios.post('/api/categoryitem', electronics);
             setPosts(res.data.item);
             setLoading(false);
         }
@@ -32,12 +37,7 @@ const Electronics = () =>{
     /*for categorized items*/
     const[clicked,setClicked] = useState(false);
     const[category, setCategory] = useState([]);
-    const electronics = {
-        "category":"electronics",
-        "userId":"",
-        "location":"",
-        "pricing":""
-    }
+
     const fetchElectronics = async () => {
         setLoading(true);
         const res = await axios.post('/api/categoryitem', electronics);
