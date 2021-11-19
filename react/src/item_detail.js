@@ -48,7 +48,8 @@ class Item_Detail extends Component{
                 } else {
                     res.json().then(data => {
                         const items = data.item;
-                        const tmp = items.filter(item => item.category == this.state.item.category);
+                        const category = this.state.item.category;
+                        const tmp = items.filter(item => item.category == category);
                         let tmp2 = tmp.filter(item => item.itemId !== id);
                         let randoms = [];
 
@@ -87,65 +88,7 @@ class Item_Detail extends Component{
                 <p>${item.price}</p>
             </div>
         )) : null;
-        if(isLoaded == false){
-            return (
-                <div className="home">
-                    <div className="header">
-                        <Link to="/">
-                            <p className="title">UB Marketplace</p>
-                        </Link>
-                        <div className="dropdown">
-                            <button className="dropbtn"></button>
-                            <div className="dropdown-content">
-                                <Link to="/login">Login/Register</Link>
-                                <Link to="/profile">View Profile</Link>
-                                <Link to="/">Logout</Link>
-                            </div>
-                        </div>
-                    </div>
-                    {item ?
-                        <div className="itemInfo">
-                            <div className="itemLeft">
-                                <div className="itemThumbnail">
-                                    <img src={item.images[0]} alt={item.name} />
-                                </div>
-                            </div>
-                            <div className="itemRight">
-                                <div className="itemName">
-                                    <h2>{item.name} {item.owner.userId === localStorage.getItem("email") ? (<Link to={editLink}>Edit Item</Link>) : ''}</h2>
-                                </div>
-                                <div className="itemPrice">
-                                    <h3>Price: ${item.price}</h3>
-                                </div>
-                                <div className="itemLocation">
-                                    <h3>Available Meetup Location</h3>
-                                    <button>{item.meetingPlace}</button>
-                                </div>
-                                <h3 className="descriptionTitle">Item Description</h3>
-                                <div className="itemDescription">
-                                    {item.description}
-                                </div>
-                                <h3 className="descriptionTitle">Contact Info</h3>
-                                <div className="itemContact">
-                                    {item.contactPhoneNumber ? `${item.owner.userId} || ${item.contactPhoneNumber}` : item.owner.userId }
-                                </div>
-                            </div>
-                        </div>
-                        :
-                        <p>Loading...</p>
-                    }
-                    { related ?
-                        <div className="relatedList">
-                            <div className="relatedItems">
-                                <h3>Related Items</h3>
-                            </div>
-                            <p>Loading...</p>
-                        </div>
-                        : '' }
-                </div>
-            );
-        }
-        else{
+
             return (
                 <div className="home">
                     <div className="header">
@@ -203,7 +146,6 @@ class Item_Detail extends Component{
                 </div>
             );
         }
-    }
 }
 
 export default Item_Detail;
