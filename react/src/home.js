@@ -3,6 +3,7 @@ import {Button} from "react-bootstrap";
 import React, {Component} from 'react';
 import "./Carousel.css";
 import './home.css';
+import "./listing.js"
 import Carousel from "./Carousel"
 import Header from "./header";
 import {handleAPIError} from "./errors";
@@ -19,7 +20,6 @@ class home extends Component{
         }
     }
 
-
     componentDidMount() {
         const requestOptions = {
             /*remove 'no-cors' once item insertion function gets finished*/
@@ -29,7 +29,6 @@ class home extends Component{
             }
 
         };
-
         fetch("/api/allitem",requestOptions)
             .then(response=> {
                 if (response.status !== 200) {
@@ -45,20 +44,22 @@ class home extends Component{
                 }
             })
     }
-    allItem(){
+
+    allItem() {
         const requestOptions = {
+            /*remove 'no-cors' once item insertion function gets finished*/
             method: "get",
             headers: {
                 "Content-Type": "application/json"
             }
-        };
 
-        fetch('/api/allitem', requestOptions)
+        };
+        fetch("/api/allitem",requestOptions)
             .then(response=> {
-                if(response.status !== 200) {
+                if (response.status !== 200) {
                     handleAPIError(response);
-                }
-                else{
+
+                } else {
                     response.json().then(data => {
                         console.log(data);
                         this.setState({
@@ -69,20 +70,27 @@ class home extends Component{
             })
     }
 
-    electronics(){
+    electronics() {
         const requestOptions = {
-            method: "get",
+            /*remove 'no-cors' once item insertion function gets finished*/
+            method: "post",
             headers: {
                 "Content-Type": "application/json"
             }
-        };
 
-        fetch(('/api/categoryitem', electronics), requestOptions)
+        };
+        const electronic = {
+            "category":"electronics",
+            "userId":"",
+            "location":"",
+            "pricing":""
+        };
+        fetch(('/api/categoryitem', electronic),requestOptions)
             .then(response=> {
-                if(response.status !== 200) {
+                if (response.status !== 200) {
                     handleAPIError(response);
-                }
-                else{
+
+                } else {
                     response.json().then(data => {
                         console.log(data);
                         this.setState({
@@ -92,58 +100,8 @@ class home extends Component{
                 }
             })
     }
-
-    // allItem(){
-    //     const requestOptions = {
-    //         method: "get",
-    //         headers: {
-    //             "Content-Type": "application/json"
-    //         }
-    //     };
-    //
-    //     fetch('/api/allitem', requestOptions)
-    //         .then(response=> {
-    //             if(response.status !== 200) {
-    //                 handleAPIError(response);
-    //             }
-    //             else{
-    //                 response.json().then(data => {
-    //                     console.log(data);
-    //                     this.setState({
-    //                         isLoaded: true,
-    //                         items: data.item})
-    //                 });
-    //             }
-    //         })
-    // }
-    //
-    // allItem(){
-    //     const requestOptions = {
-    //         method: "get",
-    //         headers: {
-    //             "Content-Type": "application/json"
-    //         }
-    //     };
-    //
-    //     fetch('/api/allitem', requestOptions)
-    //         .then(response=> {
-    //             if(response.status !== 200) {
-    //                 handleAPIError(response);
-    //             }
-    //             else{
-    //                 response.json().then(data => {
-    //                     console.log(data);
-    //                     this.setState({
-    //                         isLoaded: true,
-    //                         items: data.item})
-    //                 });
-    //             }
-    //         })
-    // }
-
 
     render() {
-
         var{isLoaded, items} = this.state;
         const email = localStorage.getItem("email");
         return (
@@ -158,6 +116,7 @@ class home extends Component{
                                 </Link>
                                 <p>{item.name}</p>
                                 <p>${item.price}</p>
+
                             </div>
                         ))}
                     </Carousel>
@@ -166,11 +125,11 @@ class home extends Component{
                 <div className="categoryList">
                     <h2>Category List</h2>
                     <ul>
-                        <li><Button onClick={this.allItem()}>All Item</Button></li>
-                        <li><Button onClick={this.electronics()}>Electronics</Button></li>
-                        <li><Link to="/listing">Textbooks</Link></li>
-                        <li><Link to="/listing">Clothings</Link></li>
-                        <li><Link to="/listing">Furnitures</Link></li>
+                        <Button onClick={this.allItem()}>All Item</Button>
+                        <Button onClick={this.electronics()}>Electronics</Button>
+                        {/*<li>Textbooks</li>*/}
+                        {/*<li>Clothings</li>*/}
+                        {/*<li>Furnitures</li>*/}
                     </ul>
                     <ul>
                         <li><Link to="/listing">See All Items</Link></li>
