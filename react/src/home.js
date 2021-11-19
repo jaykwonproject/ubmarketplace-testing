@@ -1,9 +1,7 @@
 import {Link} from "react-router-dom";
-import {Button} from "react-bootstrap";
 import React, {Component} from 'react';
 import "./Carousel.css";
 import './home.css';
-import "./listing.js"
 import Carousel from "./Carousel"
 import Header from "./header";
 import {handleAPIError} from "./errors";
@@ -29,6 +27,7 @@ class home extends Component{
             }
 
         };
+
         fetch("/api/allitem",requestOptions)
             .then(response=> {
                 if (response.status !== 200) {
@@ -44,64 +43,8 @@ class home extends Component{
                 }
             })
     }
-
-    allItem() {
-        const requestOptions = {
-            /*remove 'no-cors' once item insertion function gets finished*/
-            method: "get",
-            headers: {
-                "Content-Type": "application/json"
-            }
-
-        };
-        fetch("/api/allitem",requestOptions)
-            .then(response=> {
-                if (response.status !== 200) {
-                    handleAPIError(response);
-
-                } else {
-                    response.json().then(data => {
-                        console.log(data);
-                        this.setState({
-                            isLoaded: true,
-                            items: data.item})
-                    });
-                }
-            })
-    }
-
-    electronics() {
-        const requestOptions = {
-            /*remove 'no-cors' once item insertion function gets finished*/
-            method: "post",
-            headers: {
-                "Content-Type": "application/json"
-            }
-
-        };
-        const electronic = {
-            "category":"electronics",
-            "userId":"",
-            "location":"",
-            "pricing":""
-        };
-        fetch(('/api/categoryitem', electronic),requestOptions)
-            .then(response=> {
-                if (response.status !== 200) {
-                    handleAPIError(response);
-
-                } else {
-                    response.json().then(data => {
-                        console.log(data);
-                        this.setState({
-                            isLoaded: true,
-                            items: data.item})
-                    });
-                }
-            })
-    }
-
     render() {
+
         var{isLoaded, items} = this.state;
         const email = localStorage.getItem("email");
         return (
@@ -125,11 +68,10 @@ class home extends Component{
                 <div className="categoryList">
                     <h2>Category List</h2>
                     <ul>
-                        <Button onClick={this.allItem()}>All Item</Button>
-                        <Button onClick={this.electronics()}>Electronics</Button>
-                        {/*<li>Textbooks</li>*/}
-                        {/*<li>Clothings</li>*/}
-                        {/*<li>Furnitures</li>*/}
+                        <li><Link to ="/electronics">Electronics</Link></li>
+                        <li>Textbooks</li>
+                        <li>Clothings</li>
+                        <li>Furnitures</li>
                     </ul>
                     <ul>
                         <li><Link to="/listing">See All Items</Link></li>
@@ -139,10 +81,7 @@ class home extends Component{
             </div>
 
         );
-
-
     }
-
 }
 
 export default home;
