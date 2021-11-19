@@ -64,33 +64,33 @@ public class CategoryItemControllerTest {
         categoryItemController = new CategoryItemController(imageManager, itemManager, userManager);
     }
 
-    @Test
-    public void GIVEN_goodInput_WHEN_allItem_THEN_returnItemList() {
-        CategoryItemResponse response = categoryItemController.categorizeItem(new CategoryItemRequest("", "", "", ""));
-
-        Assertions.assertEquals(2, response.getItem().size());
-
-        ResponseItem item1 = response.getItem().get(0);
-        Assertions.assertEquals(TEST_ITEM_ID_4, item1.getItemId());
-        Assertions.assertEquals(TEST_ITEM_NAME_4, item1.getName());
-        Assertions.assertEquals(TEST_ITEM_USER_ID_4, item1.getOwner().getUserId());
-        Assertions.assertEquals(TEST_ITEM_CATEGORY_4, item1.getCategory());
-        Assertions.assertEquals(TEST_ITEM_DESCRIPTION_4, item1.getDescription());
-        Assertions.assertEquals(TEST_ITEM_PRICE_4, item1.getPrice());
-        Assertions.assertEquals(TEST_IMAGE_THUMB_1, item1.getImages().get(0));
-        Assertions.assertEquals(TEST_IMAGE_THUMB_2, item1.getImages().get(1));
-        Assertions.assertEquals(TEST_ITEM_MEETING_PLACE_4, item1.getMeetingPlace());
-        Assertions.assertEquals(TEST_ITEM_PHONE_NUMBER_FORMATTED_4, item1.getContactPhoneNumber());
-
-        ResponseItem item2 = response.getItem().get(1);
-        Assertions.assertEquals(TEST_ITEM_ID_5, item2.getItemId());
-        Assertions.assertEquals(TEST_ITEM_NAME_5, item2.getName());
-        Assertions.assertEquals(TEST_ITEM_USER_ID_5, item2.getOwner().getUserId());
-        Assertions.assertEquals(TEST_ITEM_CATEGORY_5, item2.getCategory());
-        Assertions.assertEquals(TEST_ITEM_DESCRIPTION_5, item2.getDescription());
-        Assertions.assertEquals(TEST_ITEM_PRICE_5, item2.getPrice());
-        Assertions.assertEquals(TEST_IMAGE_THUMB_2, item2.getImages().get(0));
-        Assertions.assertEquals(TEST_ITEM_MEETING_PLACE_5, item2.getMeetingPlace());
-        Assertions.assertEquals(TEST_ITEM_PHONE_NUMBER_FORMATTED_5, item2.getContactPhoneNumber());
-    }
+//    @Test
+//    public void GIVEN_goodInput_WHEN_allItem_THEN_returnItemList() {
+//        CategoryItemResponse response = categoryItemController.categorizeItem(new CategoryItemRequest("", "", "", ""));
+//
+//        Assertions.assertEquals(2, response.getItem().size());
+//
+//        ResponseItem item1 = response.getItem().get(0);
+//        Assertions.assertEquals(TEST_ITEM_ID_4, item1.getItemId());
+//        Assertions.assertEquals(TEST_ITEM_NAME_4, item1.getName());
+//        Assertions.assertEquals(TEST_ITEM_USER_ID_4, item1.getOwner().getUserId());
+//        Assertions.assertEquals(TEST_ITEM_CATEGORY_4, item1.getCategory());
+//        Assertions.assertEquals(TEST_ITEM_DESCRIPTION_4, item1.getDescription());
+//        Assertions.assertEquals(TEST_ITEM_PRICE_4, item1.getPrice());
+//        Assertions.assertEquals(TEST_IMAGE_THUMB_1, item1.getImages().get(0));
+//        Assertions.assertEquals(TEST_IMAGE_THUMB_2, item1.getImages().get(1));
+//        Assertions.assertEquals(TEST_ITEM_MEETING_PLACE_4, item1.getMeetingPlace());
+//        Assertions.assertEquals(TEST_ITEM_PHONE_NUMBER_FORMATTED_4, item1.getContactPhoneNumber());
+//
+//        ResponseItem item2 = response.getItem().get(1);
+//        Assertions.assertEquals(TEST_ITEM_ID_5, item2.getItemId());
+//        Assertions.assertEquals(TEST_ITEM_NAME_5, item2.getName());
+//        Assertions.assertEquals(TEST_ITEM_USER_ID_5, item2.getOwner().getUserId());
+//        Assertions.assertEquals(TEST_ITEM_CATEGORY_5, item2.getCategory());
+//        Assertions.assertEquals(TEST_ITEM_DESCRIPTION_5, item2.getDescription());
+//        Assertions.assertEquals(TEST_ITEM_PRICE_5, item2.getPrice());
+//        Assertions.assertEquals(TEST_IMAGE_THUMB_2, item2.getImages().get(0));
+//        Assertions.assertEquals(TEST_ITEM_MEETING_PLACE_5, item2.getMeetingPlace());
+//        Assertions.assertEquals(TEST_ITEM_PHONE_NUMBER_FORMATTED_5, item2.getContactPhoneNumber());
+//    }
 }
