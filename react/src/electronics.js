@@ -11,6 +11,7 @@ const Electronics = () =>{
     const[loading, setLoading] = useState(false);
     const[currentPage, setCurrentPage] = useState(1);
     const[postPerPage] = useState(8);
+
     const electronics = {
         "category":"electronics",
         "userId":"",
@@ -34,6 +35,7 @@ const Electronics = () =>{
         setCurrentPage(currentPage => 1);
         setLoading(false);
     }
+
     /*for categorized items*/
     const[clicked,setClicked] = useState(false);
     const[category, setCategory] = useState([]);
