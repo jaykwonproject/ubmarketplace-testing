@@ -16,13 +16,7 @@ const Listing = () =>{
         const fetchPosts = async () => {
             setLoading(true);
             const res = await axios.get('/api/allitem');
-            let Items = [];
-            for(var i = 0; i < res.data.item.length; i++){
-                if(res.data.item[i].category === "electronics"){
-                    Items.push(res.data.item[i]);
-                }
-            }
-            setPosts(Items);
+            setPosts(res.data.item);
             setLoading(false);
         }
         fetchPosts();
