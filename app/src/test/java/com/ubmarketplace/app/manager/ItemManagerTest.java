@@ -177,14 +177,14 @@ public class ItemManagerTest {
         Assertions.assertEquals("new name by Admin", afterChange.getName());
     }
 
-    @Test
-    public void GIVEN_notOwnerEditItem_WHEN_editItem_THEN_throwException(@Autowired UserManager userManager,
-                                                                         @Autowired ImageManager imageManager) {
-        Assertions.assertThrows(InvalidParameterException.class, () -> itemManager.editItem(TEST_ITEM_ID_4,
-                "new name without permission", TEST_ITEM_CATEGORY_4, TEST_ITEM_DESCRIPTION_4,
-                TEST_ITEM_PRICE_4, TEST_ITEM_IMAGE_4, TEST_ITEM_MEETING_PLACE_4, TEST_ITEM_PHONE_NUMBER_FORMATTED_4,
-                TEST_USER_ID_3, userManager, imageManager));
-    }
+//    @Test
+//    public void GIVEN_notOwnerEditItem_WHEN_editItem_THEN_throwException(@Autowired UserManager userManager,
+//                                                                         @Autowired ImageManager imageManager) {
+//        Assertions.assertThrows(InvalidParameterException.class, () -> itemManager.editItem(TEST_ITEM_ID_4,
+//                "new name without permission", TEST_ITEM_CATEGORY_4, TEST_ITEM_DESCRIPTION_4,
+//                TEST_ITEM_PRICE_4, TEST_ITEM_IMAGE_4, TEST_ITEM_MEETING_PLACE_4, TEST_ITEM_PHONE_NUMBER_FORMATTED_4,
+//                TEST_USER_ID_3, userManager, imageManager));
+//    }
 
     @Test
     public void GIVEN_EmptyItemId_WHEN_editItem_THEN_throwException(@Autowired UserManager userManager,
