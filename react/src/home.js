@@ -1,4 +1,5 @@
 import {Link} from "react-router-dom";
+import {Button} from "react-bootstrap";
 import React, {Component} from 'react';
 import "./Carousel.css";
 import './home.css';
@@ -17,6 +18,7 @@ class home extends Component{
 
         }
     }
+
 
     componentDidMount() {
         const requestOptions = {
@@ -43,6 +45,101 @@ class home extends Component{
                 }
             })
     }
+    allItem(){
+        const requestOptions = {
+            method: "get",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        };
+
+        fetch('/api/allitem', requestOptions)
+            .then(response=> {
+                if(response.status !== 200) {
+                    handleAPIError(response);
+                }
+                else{
+                    response.json().then(data => {
+                        console.log(data);
+                        this.setState({
+                            isLoaded: true,
+                            items: data.item})
+                    });
+                }
+            })
+    }
+
+    electronics(){
+        const requestOptions = {
+            method: "get",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        };
+
+        fetch(('/api/categoryitem', electronics), requestOptions)
+            .then(response=> {
+                if(response.status !== 200) {
+                    handleAPIError(response);
+                }
+                else{
+                    response.json().then(data => {
+                        console.log(data);
+                        this.setState({
+                            isLoaded: true,
+                            items: data.item})
+                    });
+                }
+            })
+    }
+
+    // allItem(){
+    //     const requestOptions = {
+    //         method: "get",
+    //         headers: {
+    //             "Content-Type": "application/json"
+    //         }
+    //     };
+    //
+    //     fetch('/api/allitem', requestOptions)
+    //         .then(response=> {
+    //             if(response.status !== 200) {
+    //                 handleAPIError(response);
+    //             }
+    //             else{
+    //                 response.json().then(data => {
+    //                     console.log(data);
+    //                     this.setState({
+    //                         isLoaded: true,
+    //                         items: data.item})
+    //                 });
+    //             }
+    //         })
+    // }
+    //
+    // allItem(){
+    //     const requestOptions = {
+    //         method: "get",
+    //         headers: {
+    //             "Content-Type": "application/json"
+    //         }
+    //     };
+    //
+    //     fetch('/api/allitem', requestOptions)
+    //         .then(response=> {
+    //             if(response.status !== 200) {
+    //                 handleAPIError(response);
+    //             }
+    //             else{
+    //                 response.json().then(data => {
+    //                     console.log(data);
+    //                     this.setState({
+    //                         isLoaded: true,
+    //                         items: data.item})
+    //                 });
+    //             }
+    //         })
+    // }
 
 
     render() {
@@ -61,7 +158,6 @@ class home extends Component{
                                 </Link>
                                 <p>{item.name}</p>
                                 <p>${item.price}</p>
-
                             </div>
                         ))}
                     </Carousel>
@@ -70,28 +166,11 @@ class home extends Component{
                 <div className="categoryList">
                     <h2>Category List</h2>
                     <ul>
-                        <li>Electronics</li>
-                        <li>Textbooks</li>
-                        <li>Clothings</li>
-                        <li>Furnitures</li>
-                    </ul>
-                    <ul>
-                        <li>Electronics</li>
-                        <li>Textbooks</li>
-                        <li>Clothings</li>
-                        <li>Furnitures</li>
-                    </ul>
-                    <ul>
-                        <li>Electronics</li>
-                        <li>Textbooks</li>
-                        <li>Clothings</li>
-                        <li>Furnitures</li>
-                    </ul>
-                    <ul>
-                        <li>Electronics</li>
-                        <li>Textbooks</li>
-                        <li>Clothings</li>
-                        <li>Furnitures</li>
+                        <li><Button onClick={this.allItem()}>All Item</Button></li>
+                        <li><Button onClick={this.electronics()}>Electronics</Button></li>
+                        <li><Button onClick={}>Textbooks</Button></li>
+                        <li><Button onClick={}>Clothings</Button></li>
+                        <li><Button onClick={}>Furnitures</Button></li>
                     </ul>
                     <ul>
                         <li><Link to="/listing">See All Items</Link></li>
