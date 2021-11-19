@@ -12,16 +12,10 @@ const Listing = () =>{
     const[currentPage, setCurrentPage] = useState(1);
     const[postPerPage] = useState(8);
 
-    const defaultCategory = {
-        "category":"electronics",
-        "userId":"",
-        "location":"",
-        "pricing":""
-    }
     useEffect(()=> {
         const fetchPosts = async () => {
             setLoading(true);
-            const res = await axios.post('/api/categoryitem', defaultCategory);
+            const res = await axios.post('/api/categoryitem', electronics);
             setPosts(res.data.item);
             setLoading(false);
         }
