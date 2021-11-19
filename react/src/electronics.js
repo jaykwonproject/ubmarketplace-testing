@@ -6,7 +6,7 @@ import Posts from './posts'
 import Pagination from './Pagination'
 import {Button} from "react-bootstrap";
 
-const Listing = () =>{
+const Electronics = () =>{
     const[posts, setPosts] = useState([]);
     const[loading, setLoading] = useState(false);
     const[currentPage, setCurrentPage] = useState(1);
@@ -112,4 +112,4 @@ const Listing = () =>{
     );
 }
 
-export default Listing;
+export default Electronics;
