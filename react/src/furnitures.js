@@ -6,7 +6,7 @@ import Posts from './posts'
 import Pagination from './Pagination'
 import {Button} from "react-bootstrap";
 
-const Electronics = () =>{
+const Furnitures = () =>{
     const[posts, setPosts] = useState([]);
     const[loading, setLoading] = useState(false);
     const[currentPage, setCurrentPage] = useState(1);
@@ -15,7 +15,7 @@ const Electronics = () =>{
     useEffect(()=> {
         const fetchPosts = async () => {
             setLoading(true);
-            const res = await axios.post('/api/categoryitem', electronics);
+            const res = await axios.post('/api/categoryitem', furnitures);
             setPosts(res.data.item);
             setLoading(false);
         }
@@ -113,4 +113,4 @@ const Electronics = () =>{
     );
 }
 
-export default Electronics;
+export default Furnitures;

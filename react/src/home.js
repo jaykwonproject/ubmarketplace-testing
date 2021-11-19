@@ -69,9 +69,9 @@ class home extends Component{
                     <h2>Category List</h2>
                     <ul>
                         <li><Link to ="/electronics">Electronics</Link></li>
-                        <li>Textbooks</li>
-                        <li>Clothings</li>
-                        <li>Furnitures</li>
+                        <li><Link to ="/textbooks">Textbooks</Link></li>
+                        <li><Link to ="/clothings">Clothings</Link></li>
+                        <li><Link to ="/furnitures">Furnitures</Link></li>
                     </ul>
                     <ul>
                         <li><Link to="/listing">See All Items</Link></li>
