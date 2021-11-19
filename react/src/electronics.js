@@ -1,6 +1,6 @@
 import React, {useEffect,useState} from 'react';
 import axios from 'axios'
-import './listing.css';
+import './electronics.css';
 import Header from "./header";
 import Posts from './posts'
 import Pagination from './Pagination'
@@ -12,7 +12,7 @@ const Listing = () =>{
     const[currentPage, setCurrentPage] = useState(1);
     const[postPerPage] = useState(8);
 
-    const defaultCategorize = {
+    const defaultCategory = {
         "category":"electronics",
         "userId":"",
         "location":"",
@@ -21,7 +21,7 @@ const Listing = () =>{
     useEffect(()=> {
         const fetchPosts = async () => {
             setLoading(true);
-            const res = await axios.post('/api/categoryitem', defaultCategorize);
+            const res = await axios.post('/api/categoryitem', defaultCategory);
             setPosts(res.data.item);
             setLoading(false);
         }
