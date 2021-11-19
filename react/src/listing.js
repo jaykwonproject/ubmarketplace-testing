@@ -5,6 +5,7 @@ import Header from "./header";
 import Posts from './posts'
 import Pagination from './Pagination'
 import {Button} from "react-bootstrap";
+import {Link} from "react-router-dom";
 
 const Listing = () =>{
     const[posts, setPosts] = useState([]);
@@ -90,7 +91,27 @@ const Listing = () =>{
         setLoading(false);
     }
 
-
+    const priceLow2High = {
+        "category":"",
+        "userId":"",
+        "location":"",
+        "pricing":"ascend"
+    }
+    const priceHigh2Low = {
+        "category":"",
+        "userId":"",
+        "location":"",
+        "pricing":"descend"
+    }
+    const fetchPriceHigh2Low = async (param) => {
+        setLoading(true);
+        const res = await axios.post('/api/categoryitem', param);
+        setClicked(current => !current);
+        setPosts(res.data.item);
+        setCurrentPage(currentPage => 1);
+        setLoading(false);
+    }
+    
 
     const indexOfLastPost = currentPage * postPerPage;
     const indexofFirstPost = indexOfLastPost - postPerPage;
@@ -106,7 +127,20 @@ const Listing = () =>{
                 <Button onClick={fetchTextbooks}>Textbooks</Button>
                 <Button onClick={fetchClothes}>Clothes</Button>
                 <Button onClick={fetchFurnitures}>Furnitures</Button>
+
             </div>
+            <div className="searchBar">
+                <Button onClick={()=>fetchPriceHigh2Low(priceLow2High)}>Ascending</Button>
+                <Button onClick={()=>fetchPriceHigh2Low(priceHigh2Low)}>Descending</Button>
+            </div>
+            <div className="searchBar">
+                <Button onClick={fetchPosts}>NSC</Button>
+                <Button onClick={fetchPosts}>Capen</Button>
+                <Button onClick={fetchPosts}>Norton</Button>
+            </div>
+
+
+
             <Posts posts={currentPosts} loading={loading}/>
             <Pagination postsPerPage={postPerPage} totalPosts={posts.length} paginate={paginate} currentPage={currentPage}/>
         </div>
