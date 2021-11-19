@@ -168,9 +168,9 @@ class home extends Component{
                     <ul>
                         <li><Button onClick={this.allItem()}>All Item</Button></li>
                         <li><Button onClick={this.electronics()}>Electronics</Button></li>
-                        <li><Button onClick={}>Textbooks</Button></li>
-                        <li><Button onClick={}>Clothings</Button></li>
-                        <li><Button onClick={}>Furnitures</Button></li>
+                        <li><Link to="/listing">Textbooks</Link></li>
+                        <li><Link to="/listing">Clothings</Link></li>
+                        <li><Link to="/listing">Furnitures</Link></li>
                     </ul>
                     <ul>
                         <li><Link to="/listing">See All Items</Link></li>
