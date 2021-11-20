@@ -5,6 +5,7 @@ import './home.css';
 import Carousel from "./Carousel"
 import Header from "./header";
 import {handleAPIError} from "./errors";
+import {Button} from "react-bootstrap";
 
 
 class home extends Component{
@@ -44,7 +45,6 @@ class home extends Component{
             })
     }
     render() {
-
         var{isLoaded, items} = this.state;
         const email = localStorage.getItem("email");
         return (
@@ -68,14 +68,28 @@ class home extends Component{
                 <div className="categoryList">
                     <h2>Category List</h2>
                     <ul>
-                        <li><Link to ="/electronics">Electronics</Link></li>
-                        <li><Link to ="/textbooks">Textbooks</Link></li>
-                        <li><Link to ="/clothings">Clothings</Link></li>
-                        <li><Link to ="/furnitures">Furnitures</Link></li>
+                        <Link to = "/electronics">
+                        <li><Button>Electronics</Button></li>
+                        </Link>
+                        <Link to = "/textbooks">
+                            <li><Button>Textbooks</Button></li>
+                        </Link>
                     </ul>
                     <ul>
-                        <li><Link to="/listing">See All Items</Link></li>
-                        <li><Link to="/sell">Sell My Items</Link></li>
+                        <Link to = "/clothings">
+                            <li><Button>Clothings</Button></li>
+                        </Link>
+                        <Link to = "/furnitures">
+                            <li><Button>Furnitures</Button></li>
+                        </Link>
+                    </ul>
+                    <ul>
+                        <Link>
+                            <li><Button>See All Items</Button></li>
+                        </Link>
+                        <Link>
+                            <li><Button>Sell My Items</Button></li>
+                        </Link>
                     </ul>
                 </div>
             </div>
