@@ -31,22 +31,19 @@ const Listing = () =>{
         setCurrentPage(currentPage => 1);
         setLoading(false);
     }
-    /*for categorized items*/
-    const[clicked,setClicked] = useState(false);
-    const[category, setCategory] = useState([]);
+
+    const fetchSortedItems = async (param) => {
+        setLoading(true);
+        const res = await axios.post('/api/categoryitem', param);
+        setPosts(res.data.item);
+        setCurrentPage(currentPage => 1);
+        setLoading(false);
+    }
     const electronics = {
         "category":"electronics",
         "userId":"",
         "location":"",
         "pricing":""
-    }
-    const fetchElectronics = async () => {
-        setLoading(true);
-        const res = await axios.post('/api/categoryitem', electronics);
-        setClicked(current => !current);
-        setPosts(res.data.item);
-        setCurrentPage(currentPage => 1);
-        setLoading(false);
     }
     const textbooks = {
         "category":"textbooks",
@@ -54,27 +51,11 @@ const Listing = () =>{
         "location":"",
         "pricing":""
     }
-    const fetchTextbooks = async () => {
-        setLoading(true);
-        const res = await axios.post('/api/categoryitem', textbooks);
-        setClicked(current => !current);
-        setPosts(res.data.item);
-        setCurrentPage(currentPage => 1);
-        setLoading(false);
-    }
     const clothes = {
         "category":"clothes",
         "userId":"",
         "location":"",
         "pricing":""
-    }
-    const fetchClothes = async () => {
-        setLoading(true);
-        const res = await axios.post('/api/categoryitem', clothes);
-        setClicked(current => !current);
-        setPosts(res.data.item);
-        setCurrentPage(currentPage => 1);
-        setLoading(false);
     }
     const furnitures = {
         "category":"furniture",
@@ -82,15 +63,6 @@ const Listing = () =>{
         "location":"",
         "pricing":""
     }
-    const fetchFurnitures = async () => {
-        setLoading(true);
-        const res = await axios.post('/api/categoryitem', furnitures);
-        setClicked(current => !current);
-        setPosts(res.data.item);
-        setCurrentPage(currentPage => 1);
-        setLoading(false);
-    }
-
     const priceLow2High = {
         "category":"",
         "userId":"",
@@ -103,15 +75,26 @@ const Listing = () =>{
         "location":"",
         "pricing":"descend"
     }
-    const fetchPriceHigh2Low = async (param) => {
-        setLoading(true);
-        const res = await axios.post('/api/categoryitem', param);
-        setClicked(current => !current);
-        setPosts(res.data.item);
-        setCurrentPage(currentPage => 1);
-        setLoading(false);
+    const NSC = {
+        "category":"",
+        "userId":"",
+        "location":"NSC",
+        "pricing":""
     }
-    
+    const Capen = {
+        "category":"",
+        "userId":"",
+        "location":"Capen",
+        "pricing":""
+    }
+    const Norton = {
+        "category":"",
+        "userId":"",
+        "location":"Norton",
+        "pricing":""
+    }
+
+
 
     const indexOfLastPost = currentPage * postPerPage;
     const indexofFirstPost = indexOfLastPost - postPerPage;
@@ -122,25 +105,32 @@ const Listing = () =>{
         <div className="listing">
             <Header email={email}/>
             <div className="searchBar">
-                <Button onClick={fetchPosts}>All Items</Button>
-                <Button onClick={fetchElectronics}>Electronics</Button>
-                <Button onClick={fetchTextbooks}>Textbooks</Button>
-                <Button onClick={fetchClothes}>Clothes</Button>
-                <Button onClick={fetchFurnitures}>Furnitures</Button>
-
+                <div className="sorting">
+                    <button className="sortBtn">Category</button>
+                    <div className="sort-content">
+                        <Button className="btns" onClick={fetchPosts}>All Items</Button>
+                        <Button className="btns" onClick={()=>fetchSortedItems(electronics)}>Electronics</Button>
+                        <Button className="btns" onClick={()=>fetchSortedItems(textbooks)}>Textbooks</Button>
+                        <Button className="btns" onClick={()=>fetchSortedItems(clothes)}>Clothes</Button>
+                        <Button className="btns" onClick={()=>fetchSortedItems(furnitures)}>Furnitures</Button>
+                    </div>
+                </div>
+                <div className="sorting">
+                    <button className="sortBtn">Price</button>
+                    <div className="sort-content">
+                        <Button className="btns" onClick={()=>fetchSortedItems(priceLow2High)}>Ascending</Button>
+                        <Button className="btns" onClick={()=>fetchSortedItems(priceHigh2Low)}>Descending</Button>
+                    </div>
+                </div>
+                <div className="sorting">
+                    <button className="sortBtn">Location</button>
+                    <div className="sort-content">
+                        <Button className="btns" onClick={()=>fetchSortedItems(NSC)}>NSC</Button>
+                        <Button className="btns" onClick={()=>fetchSortedItems(Capen)}>Capen</Button>
+                        <Button className="btns" onClick={()=>fetchSortedItems(Norton)}>Norton</Button>
+                    </div>
+                </div>
             </div>
-            <div className="searchBar">
-                <Button onClick={()=>fetchPriceHigh2Low(priceLow2High)}>Ascending</Button>
-                <Button onClick={()=>fetchPriceHigh2Low(priceHigh2Low)}>Descending</Button>
-            </div>
-            <div className="searchBar">
-                <Button onClick={fetchPosts}>NSC</Button>
-                <Button onClick={fetchPosts}>Capen</Button>
-                <Button onClick={fetchPosts}>Norton</Button>
-            </div>
-
-
-
             <Posts posts={currentPosts} loading={loading}/>
             <Pagination postsPerPage={postPerPage} totalPosts={posts.length} paginate={paginate} currentPage={currentPage}/>
         </div>

@@ -105,46 +105,42 @@ body {
 
 
 /* Dropdown Button */
-.dropbtn {
+.sortBtn {
     background-color: #005BBB;
     color: white;
     border: none;
-    font-size: 1.5rem;
+    font-size: large;
+    border-radius: 5px;
 }
 
 /* The container <div> - needed to position the dropdown content */
-.dropdown {
+.sorting {
     display: inline-block;
     margin-right:5%;
     float: right;
-    margin-top: 25px;
-
-    font-size: 1rem;
+    font-size: 1.5rem;
 }
 
 /* Dropdown Content (Hidden by Default) */
-.dropdown-content {
+.sort-content {
     display: none;
     position: absolute;
-    background-color: #f1f1f1;
     min-width: 200px;
     z-index: 1;
+    border: none;
+    font-size: large;
+    border-radius: 5px;
 }
 
-/* Links inside the dropdown */
-.dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    margin-right: 5%;
-    text-decoration: none;
-    display: block;
+.btns{
+    margin-top:5px;
+    border-radius: 5px;
+    background-color: #ffffff;
 }
 
-/* Change color of dropdown links on hover */
-.dropdown-content a:hover {background-color: #005BBB; color:white}
-
+.btns:hover{background-color: #005BBB; color:#ffffff}
 /* Show the dropdown menu on hover */
-.dropdown:hover .dropdown-content {display: block; }
+.sorting:hover .sort-content {display: block; }
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
-.dropdown:hover .dropbtn {background-color: #005BBB;}
+.sorting:hover .sortBtn {background-color: #005BBB;}
