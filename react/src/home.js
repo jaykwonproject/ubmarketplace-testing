@@ -68,32 +68,31 @@ class home extends Component{
                 <div className="categoryList">
                     <h2>Category List</h2>
                     <ul>
-                        <Link to = "/electronics">
-                        <li><Button>Electronics</Button></li>
-                        </Link>
-                        <Link to = "/textbooks">
-                            <li><Button>Textbooks</Button></li>
-                        </Link>
-                    </ul>
-                    <ul>
-                        <Link to = "/clothings">
-                            <li><Button>Clothings</Button></li>
-                        </Link>
-                        <Link to = "/furnitures">
-                            <li><Button>Furnitures</Button></li>
-                        </Link>
-                    </ul>
-                    <ul>
-                        <Link>
-                            <li><Button>See All Items</Button></li>
-                        </Link>
-                        <Link>
-                            <li><Button>Sell My Items</Button></li>
-                        </Link>
+                        <ul2>
+                            <Link to = "/electronics">
+                                <Button>Electronics</Button>
+                            </Link>
+                            <Link to = "/textbooks">
+                                <Button>Textbooks</Button>
+                            </Link>
+                            <Link to = "/clothings">
+                                <Button>Clothings</Button>
+                            </Link>
+                            <Link to = "/furnitures">
+                                 <Button>Furnitures</Button>
+                             </Link>
+                        </ul2>
+                        <ul2>
+                            <Link to = "/listing">
+                                <li><button2>See All Items</button2></li>
+                            </Link>
+                             <Link to = "/sell">
+                                 <li><button2>Sell My Items</button2></li>
+                             </Link>
+                        </ul2>
                     </ul>
                 </div>
             </div>
-
         );
     }
 }
