@@ -78,7 +78,7 @@ const Listing = () =>{
     const NSC = {
         "category":"",
         "userId":"",
-        "location":"NSC",
+        "location":"Natural Science Complex",
         "pricing":""
     }
     const Capen = {
@@ -93,8 +93,6 @@ const Listing = () =>{
         "location":"Norton",
         "pricing":""
     }
-
-
 
     const indexOfLastPost = currentPage * postPerPage;
     const indexofFirstPost = indexOfLastPost - postPerPage;

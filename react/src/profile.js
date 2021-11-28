@@ -1,9 +1,17 @@
+import React, {useEffect} from 'react';
+import axios from 'axios'
+import './listing.css';
 import './App.css';
 import './profile.css';
 import profileImg from "./profile.png";
 import {Link} from "react-router-dom";
 
-function profile() {
+const profile = () =>{
+    const fetchPosts = async () => {
+        const res = await axios.get('/api/login');
+    }
+    const email = localStorage.getItem("email");
+    const username = localStorage.getItem("displayName");
     return (
         <div className="profile">
             <div className="header">
@@ -24,6 +32,7 @@ function profile() {
                 <div className="body-Left">
 
                     <div className="profile_picture">
+                        <p>{username}</p>
                         <img src={profileImg}/>
                     </div>
 
@@ -41,15 +50,11 @@ function profile() {
                         <p>Kwon</p>
                         <p>hyukjook@buffalo.edu</p>
                     </div>
-                    <div className="editBtn">
-                        <button>Edit</button>
-                    </div>
                 </div>
 
 
             </div>
         </div>
-
     );
 }
 
