@@ -32,11 +32,18 @@ class profile extends React.Component {
             alert("Password provided is too small!")
             return;
         }
+        const data = {
+            username: 'jaytesting@buffalo.edu',
+            password: '932f3c1b56257ce8539ac269d7aab42550dacf8818d075f0bdf1990562aae3ef',
+            displayName: this.state.displayName
+        };
         const requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: {"username":"jaytesting@buffalo.edu","password":"932f3c1b56257ce8539ac269d7aab42550dacf8818d075f0bdf1990562aae3ef","displayName":this.state.displayName}
+            body: JSON.stringify(data)
         };
+
+
         fetch('/api/profileUpdate', requestOptions)
             .then(response => {
                 if (response.status !== 200) {
