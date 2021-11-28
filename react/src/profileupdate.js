@@ -19,7 +19,6 @@ class profile extends React.Component {
     changeUserId(event) {
         this.setState({userId: event.target.value});
     }
-
     changeDisplayName(event) {
         this.setState({displayName: event.target.value})
     }
@@ -28,6 +27,7 @@ class profile extends React.Component {
     }
     handleSubmit(event) {
         event.preventDefault();
+        console.log(this.state.userId);
         if (this.state.password.length < 8) {
             alert("Password provided is too small!")
             return;
@@ -35,7 +35,7 @@ class profile extends React.Component {
         const requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ userId: this.state.userId, password: sha256(this.state.password), displayName: this.state.displayName })
+            body: JSON.stringify({ username: this.state.userId, password: sha256(this.state.password), displayName: this.state.displayName })
         };
         fetch('/api/profileUpdate', requestOptions)
             .then(response => {
