@@ -10,7 +10,6 @@ const Header = ({email}) =>{
                 <button className="dropbtn">Profile</button>
                 <div className="dropdown-content">
                     <Link to="/login">Login/Register</Link>
-                    <Link to="/profile">View Profile</Link>
                 </div>
             </div>
         </Link>;
