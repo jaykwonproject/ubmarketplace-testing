@@ -34,8 +34,8 @@ class Login extends React.Component {
                 if (response.status !== 200) {
                     handleAPIError(response)
                 } else {
-                    response.json().then(user => {
-                        localStorage.setItem("username", user.displayName);
+                    response.json().then(data => {
+                        localStorage.setItem("username", data.user.displayName);
                     });
                     localStorage.setItem("email", this.state.userId);
                     this.props.history.push({pathname:"/",state: {name: this.state.username}})
