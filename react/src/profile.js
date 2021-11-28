@@ -11,7 +11,7 @@ const profile = () =>{
         const res = await axios.get('/api/login');
     }
     const email = localStorage.getItem("email");
-    const displayName = localStorage.getItem("displayName");
+    const displayName = localStorage.getItem("username");
     return (
         <div className="profile">
             <div className="header">
@@ -30,26 +30,19 @@ const profile = () =>{
             <div className="content">
 
                 <div className="body-Left">
-
                     <div className="profile_picture">
-                        <h1>{email}</h1>
-                        <p>{displayName}</p>
                         <img src={profileImg}/>
                     </div>
-
                 </div>
-
                 <div className="body-Right">
 
                     <div className="profile_info">
-                        <p>First Name:</p>
-                        <p>Last Name:</p>
+                        <p>Username:</p>
                         <p>Email:</p>
                     </div>
                     <div className="profile_info2">
-                        <p>Jay</p>
-                        <p>Kwon</p>
-                        <p>hyukjook@buffalo.edu</p>
+                        <p>{displayName}</p>
+                        <p>{email}</p>
                     </div>
                 </div>
 
