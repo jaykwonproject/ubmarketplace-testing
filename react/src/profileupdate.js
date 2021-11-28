@@ -35,7 +35,7 @@ class profile extends React.Component {
         const requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ username: this.state.userId, password: sha256(this.state.password), displayName: this.state.displayName })
+            body: {"username":"jaytesting@buffalo.edu","password":"932f3c1b56257ce8539ac269d7aab42550dacf8818d075f0bdf1990562aae3ef","displayName":this.state.displayName}
         };
         fetch('/api/profileUpdate', requestOptions)
             .then(response => {
