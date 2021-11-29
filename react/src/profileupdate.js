@@ -27,14 +27,15 @@ class profile extends React.Component {
     }
     handleSubmit(event) {
         event.preventDefault();
-        console.log(this.state.userId);
+
+
         if (this.state.password.length < 8) {
             alert("Password provided is too small!")
             return;
         }
         const data = {
-            username: 'jaytesting@buffalo.edu',
-            password: '932f3c1b56257ce8539ac269d7aab42550dacf8818d075f0bdf1990562aae3ef',
+            username: this.state.userId,
+            password: sha256(this.state.password),
             displayName: this.state.displayName
         };
         const requestOptions = {
@@ -42,13 +43,12 @@ class profile extends React.Component {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data)
         };
-
-
         fetch('/api/profileUpdate', requestOptions)
             .then(response => {
                 if (response.status !== 200) {
                     handleAPIError(response);
                 } else {
+                    localStorage.setItem("username", this.state.displayName);
                     this.props.history.push('/profile');
                 }
             });

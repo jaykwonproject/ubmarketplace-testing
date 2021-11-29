@@ -9,11 +9,8 @@ import Header from "./header";
 
 const profile = () =>{
 
-
-
     const email = localStorage.getItem("email");
     const displayName = localStorage.getItem("username");
-
 
     return (
         <div className="profile">
